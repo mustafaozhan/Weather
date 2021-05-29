@@ -2,6 +2,7 @@ plugins {
     with(Plugins) {
         id(androidLibrary)
         kotlin(android)
+        kotlin(kapt)
     }
 }
 
@@ -22,11 +23,28 @@ android {
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_1_8.toString()
         }
+
+        buildTypes {
+            all {
+                with(Keys) {
+                    buildConfigField(apiUrl.first, apiUrl.second, apiUrl.third)
+                    buildConfigField(appId.first, appId.second, appId.third)
+                }
+            }
+        }
     }
 }
 
 dependencies {
     with(Dependencies.Android) {
         implementation(kotlin)
+        implementation(koinCore)
+        implementation(coroutines)
+        implementation(retrofit)
+        implementation(moshi)
+        implementation(moshiConverter)
+    }
+    with(Annotations) {
+        kapt(moshi)
     }
 }

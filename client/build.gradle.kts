@@ -31,6 +31,7 @@ dependencies {
         implementation(lifecycleViewModel)
         implementation(lifecycleRuntime)
         implementation(coroutines)
+        implementation(timber)
         implementation(koinCore)
         implementation(koinAndroid)
     }

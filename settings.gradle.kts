@@ -7,4 +7,4 @@ include(
     ":basemob"
 )
 
-project(":basemob").projectDir = file("basemob/basemob")
+project(":basemob").projectDir = file("BaseMob/basemob")
