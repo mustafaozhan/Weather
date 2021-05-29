@@ -43,6 +43,7 @@ dependencies {
         implementation(retrofit)
         implementation(moshi)
         implementation(moshiConverter)
+        implementation(okhttpInterceptor)
     }
     with(Annotations) {
         kapt(moshi)

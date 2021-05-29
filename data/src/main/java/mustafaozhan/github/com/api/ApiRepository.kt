@@ -20,35 +20,38 @@ import java.util.concurrent.CancellationException
 import java.util.concurrent.TimeoutException
 import javax.net.ssl.SSLException
 
-class ApiRepository(private val apiFactory: ApiFactory) {
+class ApiRepository(private val apiService: ApiService) {
 
-    @Suppress("ThrowsCount", "TooGenericExceptionCaught")
-    private suspend fun <T> apiRequest(suspendBlock: suspend () -> T) =
-        withContext(Dispatchers.IO) {
-            try {
-                Result.Success(suspendBlock.invoke())
-            } catch (e: Throwable) {
-                Result.Error(
-                    when (e) {
-                        is CancellationException -> e
-                        is UnknownHostException,
-                        is TimeoutException,
-                        is IOException,
-                        is SSLException -> NetworkException(e)
-                        is ConnectException -> InternetConnectionException(e)
-                        is JsonDataException -> ModelMappingException(e)
-                        is HttpException -> RetrofitException(
-                            e.response()?.code().toString() + " " + e.response()?.message(),
-                            e.response().toString(),
-                            e
-                        )
-                        else -> UnknownNetworkException(e)
-                    }
-                )
-            }
+    @Suppress("TooGenericExceptionCaught")
+    suspend fun <T> apiRequest(
+        suspendBlock: suspend () -> T
+    ) = withContext(Dispatchers.IO) {
+        try {
+            Result.Success(suspendBlock())
+        } catch (throwable: Throwable) {
+            Result.Error(
+                when (throwable) {
+                    is CancellationException -> throwable
+                    is UnknownHostException,
+                    is TimeoutException,
+                    is IOException,
+                    is SSLException -> NetworkException(throwable)
+                    is ConnectException -> InternetConnectionException(throwable)
+                    is JsonDataException -> ModelMappingException(throwable)
+                    is HttpException -> RetrofitException(
+                        message = "${throwable.response()?.code()} ${
+                            throwable.response()?.message()
+                        }",
+                        response = throwable.response().toString(),
+                        cause = throwable
+                    )
+                    else -> UnknownNetworkException(throwable)
+                }
+            )
         }
+    }
 
     suspend fun getForecast(query: String) = apiRequest {
-        apiFactory.apiService.getForecast(query)
+        apiService.getForecast(query)
     }
 }
