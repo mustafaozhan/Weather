@@ -3,7 +3,6 @@ plugins {
         id(application)
         kotlin(android)
         id(dependencyUpdates) version Versions.dependencyUpdates
-        kotlin(kapt)
     }
 }
 
@@ -36,13 +35,13 @@ android {
 dependencies {
     with(Dependencies.Android) {
         implementation(kotlin)
-        implementation(dagger)
+        implementation(koinCore)
+        implementation(koinAndroid)
     }
-
-    kapt(Annotations.daggerCompiler)
 
     with(Modules) {
         implementation(project(ui))
         implementation(project(client))
+        implementation(project(basemob))
     }
 }

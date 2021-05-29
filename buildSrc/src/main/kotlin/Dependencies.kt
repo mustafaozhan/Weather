@@ -12,7 +12,8 @@ object Dependencies {
             "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleExt}"
         const val coroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
-        const val dagger = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+        const val koinCore = "io.insert-koin:koin-core:${Versions.koin}"
+        const val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"

@@ -2,7 +2,6 @@ plugins {
     with(Plugins) {
         id(androidLibrary)
         kotlin(android)
-        kotlin(kapt)
     }
 }
 
@@ -32,13 +31,10 @@ dependencies {
         implementation(lifecycleViewModel)
         implementation(lifecycleRuntime)
         implementation(coroutines)
-        implementation(dagger)
+        implementation(koinCore)
+        implementation(koinAndroid)
     }
     with(Modules) {
         implementation(project(data))
-    }
-    with(Annotations) {
-        kapt(daggerCompiler)
-        kapt(daggerProcessor)
     }
 }

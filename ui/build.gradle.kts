@@ -2,7 +2,6 @@ plugins {
     with(Plugins) {
         id(androidLibrary)
         kotlin(android)
-        kotlin(kapt)
     }
 }
 
@@ -35,14 +34,11 @@ dependencies {
         implementation(androidMaterial)
         implementation(constraintLayout)
         implementation(navigation)
-        implementation(dagger)
+        implementation(koinCore)
+        implementation(koinAndroid)
     }
     with(Modules) {
         implementation(project(basemob))
         implementation(project(client))
-    }
-    with(Annotations) {
-        kapt(daggerCompiler)
-        kapt(daggerProcessor)
     }
 }

@@ -3,7 +3,7 @@ object Versions {
     const val androidPlugin = "4.2.0"
     const val gsm = "4.3.3"
     const val crashlytics = "2.1.0"
-    const val dagger = "2.28.3"
+    const val koin = "3.0.1"
     const val androidMaterial = "1.2.0"
     const val constraintLayout = "2.0.1"
     const val lifecycleExt = "2.4.0-alpha01"

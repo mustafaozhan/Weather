@@ -1,25 +1,17 @@
 package mustafaozhan.github.com.weather
 
 import android.app.Application
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import mustafaozhan.github.com.weather.di.DaggerApplicationComponent
-import javax.inject.Inject
+import mustafaozhan.github.com.di.koin.clientModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.GlobalContext.startKoin
 
-class WeatherApp : Application(), HasAndroidInjector {
-
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
+class WeatherApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        DaggerApplicationComponent.builder()
-            .application(this)
-            .build()
-            .inject(this)
+        startKoin {
+            androidContext(this@WeatherApp)
+            modules(clientModule)
+        }
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 }
