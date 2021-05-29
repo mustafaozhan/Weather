@@ -1,17 +1,17 @@
 plugins {
     with(Plugins) {
-        id(library)
+        id(androidLibrary)
         kotlin(android)
     }
 }
 
 android {
     with(ProjectSettings) {
-        compileSdkVersion(projectCompileSdkVersion)
+        compileSdkVersion(compileSdkVersion)
 
         defaultConfig {
-            minSdkVersion(projectMinSdkVersion)
-            targetSdkVersion(projectTargetSdkVersion)
+            minSdk = ProjectSettings.minSdkVersion
+            targetSdk = ProjectSettings.targetSdkVersion
         }
 
         compileOptions {
@@ -30,9 +30,13 @@ android {
 }
 
 dependencies {
-    with(Dependencies) {
+    with(Dependencies.Android) {
         implementation(kotlin)
         implementation(androidMaterial)
         implementation(constraintLayout)
+        implementation(navigation)
+    }
+    with(Modules) {
+        implementation(project(basemob))
     }
 }

@@ -1,6 +1,6 @@
 object Versions {
     const val kotlin = "1.5.0"
-    const val androidPlugin = "7.1.0-alpha01"
+    const val androidPlugin = "4.2.0"
     const val gsm = "4.3.3"
     const val crashlytics = "2.1.0"
     const val dagger = "2.28.3"

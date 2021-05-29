@@ -1,5 +1,8 @@
 rootProject.name = "Weather"
 include(
     ":app",
-    ":ui"
+    ":ui",
+    ":basemob"
 )
+
+project(":basemob").projectDir = file("basemob/basemob")

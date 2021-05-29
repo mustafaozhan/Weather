@@ -1,23 +1,15 @@
 package mustafaozhan.github.com.ui
 
-import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
+import com.github.mustafaozhan.basemob.activity.BaseActivity
 
-class SplashActivity : Activity() {
+internal class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//
-//        startActivity(
-//            Intent(
-//                this,
-//                    MainActivity::class.java
-//
-//            )
-//        )
-
-//        finish()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }

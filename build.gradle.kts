@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        with(ClassPaths){
+        with(ClassPaths) {
             classpath(androidBuildTools)
             classpath(kotlinGradlePlugin)
         }

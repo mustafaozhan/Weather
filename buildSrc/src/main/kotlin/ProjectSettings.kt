@@ -11,35 +11,36 @@ object ProjectSettings {
     private const val mayorVersion = 1
     private const val minorVersion = 0
 
-    const val applicationId = "mustafaozhan.github.com.weather"
-    const val projectCompileSdkVersion = 29
-    const val projectMinSdkVersion = 21
-    const val projectTargetSdkVersion = 29
+    const val projectId = "mustafaozhan.github.com.weather"
+    const val compileSdkVersion = 30
+    const val minSdkVersion = 21
+    const val targetSdkVersion = 30
 
-    fun getVersionCode(project: Project) = gitCommitCount(project).let {
-        if (it.isEmpty()) 1 else it.toInt()
-    }
+    fun getVersionCode(project: Project) = gitCommitCount(project).toInt()
 
     fun getVersionName(project: Project) = "$mayorVersion.$minorVersion.${gitCommitCount(project)}"
 
     private fun gitCommitCount(project: Project) =
-        "git rev-list --first-parent --count origin/master"
-            .executeCommand(project.rootDir)?.trim()
-            ?: ""
-
-    @Suppress("SpreadOperator", "MagicNumber")
-    private fun String.executeCommand(workingDir: File): String? = try {
-        val parts = this.split("\\s".toRegex())
-        ProcessBuilder(*parts.toTypedArray())
-            .directory(workingDir)
-            .redirectOutput(ProcessBuilder.Redirect.PIPE)
-            .redirectError(ProcessBuilder.Redirect.PIPE)
-            .start().run {
-                waitFor(10, TimeUnit.SECONDS)
-                inputStream.bufferedReader().readText()
+        "git rev-list --first-parent --count HEAD"
+            .runCommand(project.rootDir).trim().let {
+                if (it.isEmpty()) 1.toString() else it
             }
-    } catch (e: IOException) {
-        e.printStackTrace()
-        null
-    }
+
+    private fun String.runCommand(
+        workingDir: File = File("."),
+        timeoutAmount: Long = 60,
+        timeoutUnit: TimeUnit = TimeUnit.SECONDS
+    ): String = ProcessBuilder(split("\\s(?=(?:[^'\"`]*(['\"`])[^'\"`]*\\1)*[^'\"`]*$)".toRegex()))
+        .directory(workingDir)
+        .redirectOutput(ProcessBuilder.Redirect.PIPE)
+        .redirectError(ProcessBuilder.Redirect.PIPE)
+        .start()
+        .apply { waitFor(timeoutAmount, timeoutUnit) }
+        .run {
+            val error = errorStream.bufferedReader().readText().trim()
+            if (error.isNotEmpty()) {
+                throw IOException(error)
+            }
+            inputStream.bufferedReader().readText().trim()
+        }
 }

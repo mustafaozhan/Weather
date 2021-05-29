@@ -8,11 +8,11 @@ plugins {
 
 android {
     with(ProjectSettings) {
-        compileSdkVersion(projectCompileSdkVersion)
+        compileSdkVersion(compileSdkVersion)
 
         defaultConfig {
-            minSdkVersion(projectMinSdkVersion)
-            targetSdkVersion(projectTargetSdkVersion)
+            minSdk = ProjectSettings.minSdkVersion
+            targetSdk = ProjectSettings.targetSdkVersion
 
             multiDexEnabled = true
             applicationId = applicationId
@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    with(Dependencies) {
+    with(Dependencies.Android) {
         implementation(kotlin)
     }
 
