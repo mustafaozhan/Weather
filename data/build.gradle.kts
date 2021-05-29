@@ -1,9 +1,7 @@
 plugins {
     with(Plugins) {
-        id(application)
+        id(androidLibrary)
         kotlin(android)
-        id(dependencyUpdates) version Versions.dependencyUpdates
-        kotlin(kapt)
     }
 }
 
@@ -14,12 +12,6 @@ android {
         defaultConfig {
             minSdk = ProjectSettings.minSdkVersion
             targetSdk = ProjectSettings.targetSdkVersion
-
-            multiDexEnabled = true
-            applicationId = projectId
-
-            versionCode = getVersionCode(project)
-            versionName = getVersionName(project)
         }
 
         compileOptions {
@@ -36,13 +28,5 @@ android {
 dependencies {
     with(Dependencies.Android) {
         implementation(kotlin)
-        implementation(dagger)
-    }
-
-    kapt(Annotations.daggerCompiler)
-
-    with(Modules) {
-        implementation(project(ui))
-        implementation(project(client))
     }
 }

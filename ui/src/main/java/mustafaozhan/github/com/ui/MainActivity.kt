@@ -6,9 +6,9 @@ import androidx.navigation.findNavController
 import com.github.mustafaozhan.basemob.activity.BaseActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import mustafaozhan.github.com.ui.util.showSnack
+import mustafaozhan.github.com.util.showSnack
 
-internal class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity() {
     companion object {
         internal const val BACK_DELAY: Long = 2000
     }

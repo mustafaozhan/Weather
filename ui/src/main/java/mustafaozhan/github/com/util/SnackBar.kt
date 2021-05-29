@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-package mustafaozhan.github.com.ui.util
+package mustafaozhan.github.com.util
 
 import android.graphics.Typeface
 import android.view.Gravity

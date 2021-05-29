@@ -2,6 +2,8 @@ rootProject.name = "Weather"
 include(
     ":app",
     ":ui",
+    ":client",
+    ":data",
     ":basemob"
 )
 

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.github.mustafaozhan.basemob.activity.BaseActivity
 
-internal class SplashActivity : BaseActivity() {
+class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
