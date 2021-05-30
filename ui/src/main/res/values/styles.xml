@@ -45,4 +45,15 @@
         <item name="android:textSize">@dimen/text_size_city_name</item>
         <item name="android:padding">@dimen/padding_city_name</item>
     </style>
+
+    <style name="ForecastItemStyle">
+        <item name="android:background">@color/color_background</item>
+        <item name="android:padding">@dimen/padding_forecast</item>
+    </style>
+
+    <style name="ForecastItemTextStyle">
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:textSize">@dimen/text_size_forecast_item_text</item>
+        <item name="android:padding">@dimen/padding_forecast_item_text</item>
+    </style>
 </resources>

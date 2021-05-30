@@ -36,6 +36,7 @@ dependencies {
         implementation(navigation)
         implementation(koinCore)
         implementation(koinAndroid)
+        implementation(timber)
     }
     with(Modules) {
         implementation(project(basemob))

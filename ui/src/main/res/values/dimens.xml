@@ -3,4 +3,9 @@
 
     <dimen name="text_size_city_name">36sp</dimen>
     <dimen name="padding_city_name">24dp</dimen>
+
+    <dimen name="with_height_forecast_icon">96dp</dimen>
+    <dimen name="padding_forecast">10dp</dimen>
+    <dimen name="text_size_forecast_item_text">10sp</dimen>
+    <dimen name="padding_forecast_item_text">2dp</dimen>
 </resources>

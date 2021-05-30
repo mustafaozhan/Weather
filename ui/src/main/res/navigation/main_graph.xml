@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/weatherFragment">
+    app:startDestination="@id/forecastFragment">
 
     <fragment
-        android:id="@+id/weatherFragment"
-        android:name="mustafaozhan.github.com.ui.WeatherFragment"
-        android:label="WeatherFragment"
-        tools:layout="@layout/fragment_weather" />
+        android:id="@+id/forecastFragment"
+        android:name="mustafaozhan.github.com.ui.ForecastFragment"
+        android:label="ForecastFragment"
+        tools:layout="@layout/fragment_forecast" />
 
 </navigation>

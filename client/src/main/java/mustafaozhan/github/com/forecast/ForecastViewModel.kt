@@ -1,4 +1,4 @@
-package mustafaozhan.github.com.weather
+package mustafaozhan.github.com.forecast
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,20 +8,20 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import mustafaozhan.github.com.data.api.ApiRepository
-import mustafaozhan.github.com.weather.WeatherState.Companion.update
+import mustafaozhan.github.com.forecast.ForecastState.Companion.update
 import timber.log.Timber
 
-class WeatherViewModel(
+class ForecastViewModel(
     private val apiRepository: ApiRepository
-) : ViewModel(), WeatherEvent {
+) : ViewModel(), ForecastEvent {
     // region SEED
-    private val _state = MutableStateFlow(WeatherState())
+    private val _state = MutableStateFlow(ForecastState())
     val state = _state.asStateFlow()
 
-    private val _effect = MutableSharedFlow<WeatherEffect>()
+    private val _effect = MutableSharedFlow<ForecastEffect>()
     val effect = _effect.asSharedFlow()
 
-    val event = this as WeatherEvent
+    val event = this as ForecastEvent
     // endregion
 
     init {
@@ -29,7 +29,10 @@ class WeatherViewModel(
             apiRepository.getForecast("berlin")
                 .execute(
                     {
-                        _state.update(cityName = it.city?.name ?: "")
+                        _state.update(
+                            cityName = it.city?.name ?: "",
+                            forecastList = it.list ?: listOf()
+                        )
                     },
                     {
                         Timber.e(it)

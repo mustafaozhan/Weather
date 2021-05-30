@@ -36,6 +36,6 @@ dependencies {
         implementation(koinAndroid)
     }
     with(Modules) {
-        implementation(project(data))
+        api(project(data))
     }
 }
