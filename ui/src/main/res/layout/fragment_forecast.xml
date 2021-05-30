@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     android:background="@color/color_background">
 
+
+    <include
+        android:id="@+id/layout_forecast_toolbar"
+        layout="@layout/layout_forecast_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/loading_view"
+        style="@style/ProgressBarStyle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_forecast_toolbar" />
+
     <TextView
         android:id="@+id/txt_city_name"
         style="@style/CityNameStyle"
@@ -13,7 +28,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_forecast_toolbar"
         tools:text="Berlin" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,11 +36,11 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_city_name" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_city_name"
+        app:spanCount="2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

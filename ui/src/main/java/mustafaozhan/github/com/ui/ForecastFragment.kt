@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.addRepeatingJob
 import androidx.recyclerview.widget.DiffUtil
 import com.github.mustafaozhan.basemob.adapter.BaseVBRecyclerViewAdapter
 import com.github.mustafaozhan.basemob.fragment.BaseVBFragment
 import kotlinx.coroutines.flow.collect
+import mustafaozhan.github.com.forecast.ForecastEffect
 import mustafaozhan.github.com.forecast.ForecastEvent
 import mustafaozhan.github.com.forecast.ForecastViewModel
 import mustafaozhan.github.com.model.Forecast
@@ -17,6 +19,8 @@ import mustafaozhan.github.com.ui.databinding.FragmentForecastBinding
 import mustafaozhan.github.com.ui.databinding.ItemForecastBinding
 import mustafaozhan.github.com.util.format
 import mustafaozhan.github.com.util.getWeatherIconByName
+import mustafaozhan.github.com.util.showLoading
+import mustafaozhan.github.com.util.showSnack
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
@@ -30,11 +34,23 @@ class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         observeStates()
+        observeEffect()
     }
 
     private fun initViews() {
         forecastAdapter = ForecastAdapter(forecastViewModel.event)
-        binding.recyclerViewForecast.adapter = forecastAdapter
+        with(binding) {
+            recyclerViewForecast.adapter = forecastAdapter
+            layoutForecastToolbar.searchView.setOnQueryTextListener(object :
+                SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(newText: String): Boolean {
+                    forecastViewModel.event.onQueryChange(newText)
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String) = false
+            })
+        }
     }
 
     private fun observeStates() = viewLifecycleOwner.addRepeatingJob(Lifecycle.State.STARTED) {
@@ -42,11 +58,28 @@ class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
             with(it) {
                 forecastAdapter.submitList(it.forecastList)
 
+                binding.loadingView.showLoading(it.isLoading)
+
                 binding.txtCityName.text = if (cityName.isEmpty() || country.isEmpty()) {
                     cityName
                 } else {
                     getString(R.string.txt_location, cityName, country)
                 }
+            }
+        }
+    }
+
+    private fun observeEffect() = viewLifecycleOwner.addRepeatingJob(Lifecycle.State.STARTED) {
+        forecastViewModel.effect.collect { viewEffect ->
+            when (viewEffect) {
+                ForecastEffect.Error -> showSnack(
+                    requireView(),
+                    R.string.txt_unexpected_error
+                )
+                ForecastEffect.CityNotFound -> showSnack(
+                    requireView(),
+                    R.string.txt_city_not_found
+                )
             }
         }
     }

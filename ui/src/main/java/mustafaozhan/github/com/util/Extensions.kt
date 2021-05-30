@@ -1,6 +1,7 @@
 package mustafaozhan.github.com.util
 
 import android.annotation.SuppressLint
+import android.view.View
 import android.widget.ImageView
 import timber.log.Timber
 import java.io.FileNotFoundException
@@ -31,3 +32,16 @@ fun String.format(): String = SimpleDateFormat(
 ).parse(this)?.let {
     SimpleDateFormat(EXPECTED_DATE_FORMAT).format(it)
 } ?: ""
+
+fun View.showLoading(visible: Boolean) = if (visible) {
+    visible()
+    bringToFront()
+} else gone()
+
+fun View?.visible() {
+    this?.visibility = View.VISIBLE
+}
+
+fun View?.gone() {
+    this?.visibility = View.GONE
+}

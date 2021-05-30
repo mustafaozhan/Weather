@@ -8,4 +8,12 @@
     <dimen name="padding_forecast">32dp</dimen>
     <dimen name="text_size_forecast_item_text">13sp</dimen>
     <dimen name="padding_forecast_item_text">2dp</dimen>
+
+    <dimen name="text_size_toolbar">24sp</dimen>
+
+    <dimen name="max_width_search_view">256dp</dimen>
+
+    <!--ProgressBar-->
+    <dimen name="progress_bar_height_width">72dp</dimen>
+    <dimen name="progress_bar_margin_top">24dp</dimen>
 </resources>

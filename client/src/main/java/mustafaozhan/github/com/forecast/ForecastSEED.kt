@@ -26,6 +26,19 @@ data class ForecastState(
     }
 }
 
-interface ForecastEvent
+interface ForecastEvent {
+    fun onQueryChange(query: String)
+}
 
-sealed class ForecastEffect
+sealed class ForecastEffect {
+    object Error : ForecastEffect()
+    object CityNotFound : ForecastEffect()
+}
+
+data class ForecastData(
+    var query: String = "Berlin"
+) {
+    companion object {
+        const val ERROR_CODE_NOT_FOUND = 404
+    }
+}
