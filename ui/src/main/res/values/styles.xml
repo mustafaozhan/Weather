@@ -3,7 +3,7 @@
   -->
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
@@ -20,6 +20,8 @@
         <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
         <item name="android:navigationBarColor">@color/color_background_strong</item>
     </style>
+
+    <style name="AppTheme" parent="BaseAppTheme" />
 
     <style name="AppTheme.WindowTransition">
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
@@ -41,6 +43,8 @@
     </style>
 
     <style name="CityNameStyle">
+        <item name="android:background">@color/color_background_strong</item>
+        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/color_text</item>
         <item name="android:textSize">@dimen/text_size_city_name</item>
         <item name="android:padding">@dimen/padding_city_name</item>
@@ -52,6 +56,7 @@
     </style>
 
     <style name="ForecastItemTextStyle">
+        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/color_text</item>
         <item name="android:textSize">@dimen/text_size_forecast_item_text</item>
         <item name="android:padding">@dimen/padding_forecast_item_text</item>

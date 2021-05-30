@@ -8,8 +8,9 @@
 
     <ImageView
         android:id="@+id/img_forecast"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/with_height_forecast_icon"
+        android:layout_height="@dimen/with_height_forecast_icon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
@@ -20,8 +21,8 @@
         style="@style/ForecastItemTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/img_forecast"
-        app:layout_constraintStart_toStartOf="@+id/img_forecast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_forecast"
         tools:text="Temperature: 15°C" />
 
@@ -30,8 +31,8 @@
         style="@style/ForecastItemTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/img_forecast"
-        app:layout_constraintStart_toStartOf="@+id/img_forecast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_temperature"
         tools:text="Feels like: 14°C" />
 
@@ -40,8 +41,8 @@
         style="@style/ForecastItemTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/img_forecast"
-        app:layout_constraintStart_toStartOf="@+id/img_forecast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_fells_like"
         tools:text="Clear" />
 
@@ -50,8 +51,8 @@
         style="@style/ForecastItemTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/img_forecast"
-        app:layout_constraintStart_toStartOf="@+id/img_forecast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_weather_status"
         tools:text="10:00" />
 

@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import mustafaozhan.github.com.data.api.ApiRepository
 import mustafaozhan.github.com.forecast.ForecastState.Companion.update
+import mustafaozhan.github.com.model.ForecastResponse
 import timber.log.Timber
 
 class ForecastViewModel(
@@ -26,18 +27,27 @@ class ForecastViewModel(
 
     init {
         viewModelScope.launch {
-            apiRepository.getForecast("berlin")
+            apiRepository
+                .getForecast("berlin")
                 .execute(
-                    {
-                        _state.update(
-                            cityName = it.city?.name ?: "",
-                            forecastList = it.list ?: listOf()
-                        )
-                    },
-                    {
-                        Timber.e(it)
-                    }
+                    ::getForecastSuccessful,
+                    ::getForecastFailed,
+                    ::getForecastCompleted
                 )
         }
     }
+
+    private fun getForecastSuccessful(
+        forecastResponse: ForecastResponse
+    ) = with(forecastResponse) {
+        _state.update(
+            cityName = city?.name ?: "",
+            country = city?.country ?: "",
+            forecastList = list ?: listOf()
+        )
+    }
+
+    private fun getForecastFailed(throwable: Throwable) = Timber.e(throwable)
+
+    private fun getForecastCompleted() = _state.update(isLoading = false)
 }

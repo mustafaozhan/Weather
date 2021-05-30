@@ -15,6 +15,7 @@ import mustafaozhan.github.com.forecast.ForecastViewModel
 import mustafaozhan.github.com.model.Forecast
 import mustafaozhan.github.com.ui.databinding.FragmentForecastBinding
 import mustafaozhan.github.com.ui.databinding.ItemForecastBinding
+import mustafaozhan.github.com.util.format
 import mustafaozhan.github.com.util.getWeatherIconByName
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,8 +40,13 @@ class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
     private fun observeStates() = viewLifecycleOwner.addRepeatingJob(Lifecycle.State.STARTED) {
         forecastViewModel.state.collect {
             with(it) {
-                binding.txtCityName.text = cityName
                 forecastAdapter.submitList(it.forecastList)
+
+                binding.txtCityName.text = if (cityName.isEmpty() || country.isEmpty()) {
+                    cityName
+                } else {
+                    getString(R.string.txt_location, cityName, country)
+                }
             }
         }
     }
@@ -66,10 +72,16 @@ class ForecastAdapter(
 
         override fun onItemBind(item: Forecast) = with(itemBinding) {
             imgForecast.getWeatherIconByName(item.weather?.firstOrNull()?.icon)
-            txtFellsLike.text = item.main?.feelsLike?.toString()
-            txtTemperature.text = item.main?.temp?.toString()
+            txtTemperature.text = txtTemperature.context.getString(
+                R.string.txt_temperature,
+                item.main?.temp?.toInt()?.toString()
+            )
+            txtFellsLike.text = txtFellsLike.context.getString(
+                R.string.txt_feels_like,
+                item.main?.feelsLike?.toInt()?.toString()
+            )
             txtWeatherStatus.text = item.weather?.firstOrNull()?.main
-            txtWeatherTime.text = item.dtTxt.toString()
+            txtWeatherTime.text = item.dtTxt?.format()
         }
     }
 
