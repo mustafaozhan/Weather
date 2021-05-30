@@ -1,14 +1,14 @@
 /*
  Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-package mustafaozhan.github.com.api
+package mustafaozhan.github.com.data.api
 
 import mustafaozhan.github.com.data.BuildConfig
-import mustafaozhan.github.com.model.ForecastResponse
+import mustafaozhan.github.com.data.entity.ForecastResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ApiService {
+internal interface ApiService {
 
     companion object {
         private const val DEFAULT_UNITS = "metric"

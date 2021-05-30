@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_city_name">36sp</dimen>
+    <dimen name="padding_city_name">24dp</dimen>
+</resources>

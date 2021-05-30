@@ -1,13 +1,21 @@
 package mustafaozhan.github.com.weather
 
-import mustafaozhan.github.com.base.BaseEffect
-import mustafaozhan.github.com.base.BaseEvent
-import mustafaozhan.github.com.base.BaseState
+import kotlinx.coroutines.flow.MutableStateFlow
 
 data class WeatherState(
-    val helloWorldText: String = "Hello World!"
-) : BaseState()
+    val cityName: String = ""
+) {
+    companion object {
+        fun MutableStateFlow<WeatherState>.update(
+            cityName: String = value.cityName,
+        ) {
+            value = value.copy(
+                cityName = cityName
+            )
+        }
+    }
+}
 
-interface WeatherEvent : BaseEvent
+interface WeatherEvent
 
-sealed class WeatherEffect : BaseEffect()
+sealed class WeatherEffect

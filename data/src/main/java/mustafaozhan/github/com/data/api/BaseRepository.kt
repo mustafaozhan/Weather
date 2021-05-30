@@ -1,7 +1,4 @@
-/*
- Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
- */
-package mustafaozhan.github.com.api
+package mustafaozhan.github.com.data.api
 
 import com.squareup.moshi.JsonDataException
 import kotlinx.coroutines.Dispatchers
@@ -20,8 +17,7 @@ import java.util.concurrent.CancellationException
 import java.util.concurrent.TimeoutException
 import javax.net.ssl.SSLException
 
-class ApiRepository(private val apiService: ApiService) {
-
+open class BaseRepository {
     @Suppress("TooGenericExceptionCaught")
     suspend fun <T> apiRequest(
         suspendBlock: suspend () -> T
@@ -49,9 +45,5 @@ class ApiRepository(private val apiService: ApiService) {
                 }
             )
         }
-    }
-
-    suspend fun getForecast(query: String) = apiRequest {
-        apiService.getForecast(query)
     }
 }

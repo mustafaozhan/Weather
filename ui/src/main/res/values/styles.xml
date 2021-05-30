@@ -39,4 +39,10 @@
         <item name="android:windowBackground">@drawable/background_splash</item>
         <item name="android:windowAnimationStyle">@style/AppTheme.WindowTransition</item>
     </style>
+
+    <style name="CityNameStyle">
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:textSize">@dimen/text_size_city_name</item>
+        <item name="android:padding">@dimen/padding_city_name</item>
+    </style>
 </resources>

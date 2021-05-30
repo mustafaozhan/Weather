@@ -24,7 +24,7 @@ class WeatherFragment : BaseVBFragment<FragmentWeatherBinding>() {
     private fun observeStates() = viewLifecycleOwner.addRepeatingJob(Lifecycle.State.STARTED) {
         weatherViewModel.state.collect {
             with(it) {
-                binding.txt.text = helloWorldText
+                binding.txtCityName.text = cityName
             }
         }
     }
