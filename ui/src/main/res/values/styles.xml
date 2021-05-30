@@ -1,9 +1,9 @@
 <!--
   Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
   -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
@@ -20,6 +20,8 @@
         <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
         <item name="android:navigationBarColor">@color/color_background_strong</item>
     </style>
+
+    <style name="AppTheme" parent="BaseAppTheme" />
 
     <style name="AppTheme.WindowTransition">
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
@@ -38,5 +40,47 @@
     <style name="AppTheme.Fullscreen.SplashTheme">
         <item name="android:windowBackground">@drawable/background_splash</item>
         <item name="android:windowAnimationStyle">@style/AppTheme.WindowTransition</item>
+    </style>
+
+    <style name="CityNameStyle">
+        <item name="android:background">@color/color_background_strong</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:textSize">@dimen/text_size_city_name</item>
+        <item name="android:padding">@dimen/padding_city_name</item>
+    </style>
+
+    <style name="ForecastItemStyle">
+        <item name="android:background">@color/color_background</item>
+        <item name="android:padding">@dimen/padding_forecast</item>
+    </style>
+
+    <style name="ForecastItemTextStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:textSize">@dimen/text_size_forecast_item_text</item>
+        <item name="android:padding">@dimen/padding_forecast_item_text</item>
+    </style>
+
+    <style name="CurrenciesToolbarTextStyle">
+        <item name="android:text">@string/txt_forecast</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/text_size_toolbar</item>
+        <item name="android:textColor">@color/color_text</item>
+    </style>
+
+    <style name="SearchViewStyle">
+        <item name="android:maxWidth">@dimen/max_width_search_view</item>
+        <item name="queryHint">@string/txt_search</item>
+        <item name="closeIcon">@drawable/ic_close</item>
+        <item name="searchHintIcon">@drawable/ic_search_hint</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+    </style>
+
+    <style name="ProgressBarStyle">
+        <item name="android:paddingTop">@dimen/progress_bar_margin_top</item>
+        <item name="android:layout_width">@dimen/progress_bar_height_width</item>
+        <item name="android:layout_height">@dimen/progress_bar_height_width</item>
     </style>
 </resources>

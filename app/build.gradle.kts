@@ -42,6 +42,7 @@ dependencies {
     with(Modules) {
         implementation(project(ui))
         implementation(project(client))
+        implementation(project(data))
         implementation(project(basemob))
     }
 }

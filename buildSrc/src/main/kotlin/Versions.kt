@@ -13,7 +13,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val moshi = "1.9.3"
     const val room = "2.2.5"
-    const val coroutines = "1.5.0"
+    const val coroutines = "1.4.3"
     const val timber = "4.7.1"
     const val navigation = "2.3.0"
     const val anrWatchDog = "1.4.0"

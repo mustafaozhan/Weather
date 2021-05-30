@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ForecastItemStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_forecast"
+        android:layout_width="@dimen/with_height_forecast_icon"
+        android:layout_height="@dimen/with_height_forecast_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/icon_01d" />
+
+    <TextView
+        android:id="@+id/txt_temperature"
+        style="@style/ForecastItemTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_forecast"
+        tools:text="Temperature: 15°C" />
+
+    <TextView
+        android:id="@+id/txt_fells_like"
+        style="@style/ForecastItemTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_temperature"
+        tools:text="Feels like: 14°C" />
+
+    <TextView
+        android:id="@+id/txt_weather_status"
+        style="@style/ForecastItemTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fells_like"
+        tools:text="Clear" />
+
+    <TextView
+        android:id="@+id/txt_weather_time"
+        style="@style/ForecastItemTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_weather_status"
+        tools:text="10:00" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

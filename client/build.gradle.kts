@@ -31,10 +31,11 @@ dependencies {
         implementation(lifecycleViewModel)
         implementation(lifecycleRuntime)
         implementation(coroutines)
+        implementation(timber)
         implementation(koinCore)
         implementation(koinAndroid)
     }
     with(Modules) {
-        implementation(project(data))
+        api(project(data))
     }
 }

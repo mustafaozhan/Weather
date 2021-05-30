@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_city_name">36sp</dimen>
+    <dimen name="padding_city_name">12dp</dimen>
+
+    <dimen name="with_height_forecast_icon">96dp</dimen>
+    <dimen name="padding_forecast">32dp</dimen>
+    <dimen name="text_size_forecast_item_text">13sp</dimen>
+    <dimen name="padding_forecast_item_text">2dp</dimen>
+
+    <dimen name="text_size_toolbar">24sp</dimen>
+
+    <dimen name="max_width_search_view">256dp</dimen>
+
+    <!--ProgressBar-->
+    <dimen name="progress_bar_height_width">72dp</dimen>
+    <dimen name="progress_bar_margin_top">24dp</dimen>
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="click_back_again_to_exit">Please click BACK again to exit</string>
+
+    <string name="txt_location">%s, %s</string>
+    <string name="txt_temperature">"Temperature: %s°C"</string>
+    <string name="txt_feels_like">"Fells like: %s°C"</string>
+
+    <string name="txt_forecast">Forecast</string>
+    <string name="txt_search">Search</string>
+
+    <string name="txt_unexpected_error">Unexpected error happened</string>
+    <string name="txt_city_not_found">City not found please be sure you type a valid city name</string>
+</resources>

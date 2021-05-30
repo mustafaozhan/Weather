@@ -10,7 +10,7 @@ import mustafaozhan.github.com.util.showSnack
 
 class MainActivity : BaseActivity() {
     companion object {
-        internal const val BACK_DELAY: Long = 2000
+         const val BACK_DELAY: Long = 2000
     }
 
     private var doubleBackToExitPressedOnce = false
@@ -21,7 +21,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (findNavController(containerId).currentDestination?.id == R.id.weatherFragment) {
+        if (findNavController(containerId).currentDestination?.id == R.id.forecastFragment) {
             if (doubleBackToExitPressedOnce) {
                 super.onBackPressed()
                 return
