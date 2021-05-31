@@ -1,4 +1,4 @@
-package mustafaozhan.github.com.forecast
+package mustafaozhan.github.com.viewmodel.forecast
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,9 +9,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import mustafaozhan.github.com.data.api.ApiRepository
 import mustafaozhan.github.com.error.HttpRequestException
-import mustafaozhan.github.com.forecast.ForecastData.Companion.ERROR_CODE_NOT_FOUND
-import mustafaozhan.github.com.forecast.ForecastState.Companion.update
+import mustafaozhan.github.com.model.Forecast
 import mustafaozhan.github.com.model.ForecastResponse
+import mustafaozhan.github.com.viewmodel.forecast.ForecastData.Companion.ERROR_CODE_NOT_FOUND
+import mustafaozhan.github.com.viewmodel.forecast.ForecastState.Companion.update
 import timber.log.Timber
 
 class ForecastViewModel(
@@ -78,5 +79,11 @@ class ForecastViewModel(
     override fun onQueryChange(query: String) {
         data.query = query
         getForecast()
+    }
+
+    override fun onItemClick(forecast: Forecast) {
+        viewModelScope.launch {
+            _effect.emit(ForecastEffect.OpenDetailScreen(forecast))
+        }
     }
 }

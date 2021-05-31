@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_fragment_detail"
+        style="@style/ToolbarTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/color_background_strong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/txt_date"
+        style="@style/CityNameStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_detail"
+        tools:text="Berlin" />
+
+    <ImageView
+        android:id="@+id/img_forecast"
+        android:layout_width="@dimen/with_height_detail_icon"
+        android:layout_height="@dimen/with_height_detail_icon"
+        android:layout_marginTop="@dimen/margin_detail_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_date"
+        tools:ignore="MissingConstraints"
+        tools:src="@drawable/icon_01d" />
+
+    <TextView
+        android:id="@+id/txt_description"
+        style="@style/DetailTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_detail_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_forecast"
+        tools:text="Clear" />
+
+    <TextView
+        android:id="@+id/txt_min_temp"
+        style="@style/DetailTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_description"
+        tools:text="Min: 15" />
+
+    <TextView
+        android:id="@+id/txt_max_temp"
+        style="@style/DetailTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_min_temp"
+        tools:text="Max: 15" />
+
+    <TextView
+        android:id="@+id/txt_humidity"
+        style="@style/DetailTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_max_temp"
+        tools:text="Humidity: %15" />
+
+    <TextView
+        android:id="@+id/txt_wind"
+        style="@style/DetailTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_humidity"
+        tools:text="Wind: 15 km/h" />
+
+    <TextView
+        android:id="@+id/txt_sea_level"
+        style="@style/DetailTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_wind"
+        tools:text="Sea level: 15m" />
+</androidx.constraintlayout.widget.ConstraintLayout>

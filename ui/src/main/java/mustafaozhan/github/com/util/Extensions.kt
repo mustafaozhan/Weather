@@ -3,6 +3,7 @@ package mustafaozhan.github.com.util
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import timber.log.Timber
 import java.io.FileNotFoundException
 import java.text.SimpleDateFormat
@@ -44,4 +45,12 @@ fun View?.visible() {
 
 fun View?.gone() {
     this?.visibility = View.GONE
+}
+
+fun TextView.showDetailOrHide(resourceId: Int, stringText: String) {
+    if (stringText.isEmpty()) {
+        gone()
+    } else {
+        text = context.getString(resourceId, stringText)
+    }
 }

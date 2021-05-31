@@ -9,6 +9,20 @@
         android:id="@+id/forecastFragment"
         android:name="mustafaozhan.github.com.ui.ForecastFragment"
         android:label="ForecastFragment"
-        tools:layout="@layout/fragment_forecast" />
+        tools:layout="@layout/fragment_forecast">
+        <action
+            android:id="@+id/action_forecastFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="mustafaozhan.github.com.ui.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="forecast"
+            app:argType="mustafaozhan.github.com.model.Forecast" />
+    </fragment>
 
 </navigation>

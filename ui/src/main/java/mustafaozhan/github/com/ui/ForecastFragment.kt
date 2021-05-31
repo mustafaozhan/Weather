@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.DiffUtil
 import com.github.mustafaozhan.basemob.adapter.BaseVBRecyclerViewAdapter
 import com.github.mustafaozhan.basemob.fragment.BaseVBFragment
 import kotlinx.coroutines.flow.collect
-import mustafaozhan.github.com.forecast.ForecastEffect
-import mustafaozhan.github.com.forecast.ForecastEvent
-import mustafaozhan.github.com.forecast.ForecastViewModel
 import mustafaozhan.github.com.model.Forecast
 import mustafaozhan.github.com.ui.databinding.FragmentForecastBinding
 import mustafaozhan.github.com.ui.databinding.ItemForecastBinding
@@ -21,6 +18,9 @@ import mustafaozhan.github.com.util.format
 import mustafaozhan.github.com.util.getWeatherIconByName
 import mustafaozhan.github.com.util.showLoading
 import mustafaozhan.github.com.util.showSnack
+import mustafaozhan.github.com.viewmodel.forecast.ForecastEffect
+import mustafaozhan.github.com.viewmodel.forecast.ForecastEvent
+import mustafaozhan.github.com.viewmodel.forecast.ForecastViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
@@ -80,6 +80,10 @@ class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
                     requireView(),
                     R.string.txt_city_not_found
                 )
+                is ForecastEffect.OpenDetailScreen -> navigate(
+                    R.id.forecastFragment,
+                    ForecastFragmentDirections.actionForecastFragmentToDetailFragment(viewEffect.forecast)
+                )
             }
         }
     }
@@ -115,6 +119,8 @@ class ForecastAdapter(
             )
             txtWeatherStatus.text = item.weather?.firstOrNull()?.main
             txtWeatherTime.text = item.dtTxt?.format()
+
+            itemBinding.root.setOnClickListener { event.onItemClick(item) }
         }
     }
 

@@ -8,6 +8,7 @@ buildscript {
         with(ClassPaths) {
             classpath(androidBuildTools)
             classpath(kotlinGradlePlugin)
+            classpath(navigation)
         }
     }
 }

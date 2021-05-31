@@ -2,6 +2,7 @@ plugins {
     with(Plugins) {
         id(androidLibrary)
         kotlin(android)
+        id(parcelize)
         kotlin(kapt)
     }
 }
