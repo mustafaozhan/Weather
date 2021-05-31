@@ -90,4 +90,14 @@
         <item name="android:textSize">@dimen/text_size_detail</item>
         <item name="android:padding">@dimen/padding_detail</item>
     </style>
+
+    <style name="BarTitleStyle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:text">@string/txt_history</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/padding_history</item>
+        <item name="android:background">@color/color_background_strong</item>
+    </style>
+
 </resources>

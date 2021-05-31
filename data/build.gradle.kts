@@ -45,8 +45,10 @@ dependencies {
         implementation(moshi)
         implementation(moshiConverter)
         implementation(okhttpInterceptor)
+        implementation(roomKtx)
     }
     with(Annotations) {
         kapt(moshi)
+        kapt(room)
     }
 }

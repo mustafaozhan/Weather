@@ -20,4 +20,7 @@
     <string name="txt_humidity">"Humidity: \%%%s"</string>
     <string name="txt_wind">"Wind: %s km/h"</string>
     <string name="txt_sea_level">"Sea level: %sm"</string>
+
+    <string name="txt_history">History</string>
+
 </resources>

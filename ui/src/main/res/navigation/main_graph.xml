@@ -10,9 +10,17 @@
         android:name="mustafaozhan.github.com.ui.ForecastFragment"
         android:label="ForecastFragment"
         tools:layout="@layout/fragment_forecast">
+        <argument
+            android:name="history"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_forecastFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_forecastFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
 
     <fragment
@@ -24,5 +32,21 @@
             android:name="forecast"
             app:argType="mustafaozhan.github.com.model.Forecast" />
     </fragment>
+
+    <dialog
+        android:id="@+id/historyFragment"
+        android:name="mustafaozhan.github.com.ui.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_forecastFragment"
+            app:destination="@id/forecastFragment"
+            app:popUpTo="@id/historyFragment"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="history"
+                app:argType="string" />
+        </action>
+    </dialog>
 
 </navigation>

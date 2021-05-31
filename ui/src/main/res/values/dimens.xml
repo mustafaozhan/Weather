@@ -22,4 +22,9 @@
     <dimen name="text_size_detail">15sp</dimen>
     <dimen name="padding_detail">16dp</dimen>
 
+    <dimen name="padding_history">8dp</dimen>
+
+    <dimen name="with_height_history_icon">28dp</dimen>
+    <dimen name="margin_history_icon">8dp</dimen>
+
 </resources>
