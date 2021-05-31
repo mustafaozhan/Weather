@@ -11,4 +11,16 @@
 
     <string name="txt_unexpected_error">Unexpected error happened</string>
     <string name="txt_city_not_found">City not found please be sure you type a valid city name</string>
+
+    <string name="details">Details</string>
+
+    <string name="txt_description">"Description: %s</string>
+    <string name="txt_min_degree">"Min temperature: %s°C"</string>
+    <string name="txt_max_degree">"Max temperature: %s°C"</string>
+    <string name="txt_humidity">"Humidity: \%%%s"</string>
+    <string name="txt_wind">"Wind: %s km/h"</string>
+    <string name="txt_sea_level">"Sea level: %sm"</string>
+
+    <string name="txt_history">History</string>
+
 </resources>

@@ -2,6 +2,7 @@ plugins {
     with(Plugins) {
         id(androidLibrary)
         kotlin(android)
+        id(parcelize)
         kotlin(kapt)
     }
 }
@@ -44,8 +45,10 @@ dependencies {
         implementation(moshi)
         implementation(moshiConverter)
         implementation(okhttpInterceptor)
+        implementation(roomKtx)
     }
     with(Annotations) {
         kapt(moshi)
+        kapt(room)
     }
 }

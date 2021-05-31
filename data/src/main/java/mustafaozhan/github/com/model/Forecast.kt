@@ -1,5 +1,9 @@
 package mustafaozhan.github.com.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Forecast(
     val clouds: Clouds?,
     val dt: Int?,
@@ -11,4 +15,4 @@ data class Forecast(
     val visibility: Int?,
     val weather: List<Weather>?,
     val wind: Wind?
-)
+) : Parcelable

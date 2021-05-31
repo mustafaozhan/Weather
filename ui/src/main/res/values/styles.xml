@@ -62,7 +62,7 @@
         <item name="android:padding">@dimen/padding_forecast_item_text</item>
     </style>
 
-    <style name="CurrenciesToolbarTextStyle">
+    <style name="ToolbarTextStyle">
         <item name="android:text">@string/txt_forecast</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
@@ -83,4 +83,21 @@
         <item name="android:layout_width">@dimen/progress_bar_height_width</item>
         <item name="android:layout_height">@dimen/progress_bar_height_width</item>
     </style>
+
+    <style name="DetailTextStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:textSize">@dimen/text_size_detail</item>
+        <item name="android:padding">@dimen/padding_detail</item>
+    </style>
+
+    <style name="BarTitleStyle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:text">@string/txt_history</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/padding_history</item>
+        <item name="android:background">@color/color_background_strong</item>
+    </style>
+
 </resources>

@@ -37,6 +37,7 @@ dependencies {
         implementation(kotlin)
         implementation(koinCore)
         implementation(koinAndroid)
+        implementation(roomRuntime)
     }
 
     with(Modules) {

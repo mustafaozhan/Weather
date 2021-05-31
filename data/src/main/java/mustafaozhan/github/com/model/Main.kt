@@ -1,5 +1,9 @@
 package mustafaozhan.github.com.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Main(
     val feelsLike: Double?,
     val grndLevel: Int?,
@@ -10,4 +14,4 @@ data class Main(
     val tempKf: Double?,
     val tempMax: Double?,
     val tempMin: Double?
-)
+) : Parcelable

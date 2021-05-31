@@ -16,4 +16,15 @@
     <!--ProgressBar-->
     <dimen name="progress_bar_height_width">72dp</dimen>
     <dimen name="progress_bar_margin_top">24dp</dimen>
+
+    <dimen name="with_height_detail_icon">128dp</dimen>
+    <dimen name="margin_detail_icon">24dp</dimen>
+    <dimen name="text_size_detail">15sp</dimen>
+    <dimen name="padding_detail">16dp</dimen>
+
+    <dimen name="padding_history">8dp</dimen>
+
+    <dimen name="with_height_history_icon">28dp</dimen>
+    <dimen name="margin_history_icon">8dp</dimen>
+
 </resources>

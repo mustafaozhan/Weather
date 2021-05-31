@@ -2,6 +2,7 @@ plugins {
     with(Plugins) {
         id(androidLibrary)
         kotlin(android)
+        id(safeargs)
     }
 }
 
@@ -37,6 +38,7 @@ dependencies {
         implementation(koinCore)
         implementation(koinAndroid)
         implementation(timber)
+        implementation(navigation)
     }
     with(Modules) {
         implementation(project(basemob))

@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.addRepeatingJob
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DiffUtil
 import com.github.mustafaozhan.basemob.adapter.BaseVBRecyclerViewAdapter
 import com.github.mustafaozhan.basemob.fragment.BaseVBFragment
 import kotlinx.coroutines.flow.collect
-import mustafaozhan.github.com.forecast.ForecastEffect
-import mustafaozhan.github.com.forecast.ForecastEvent
-import mustafaozhan.github.com.forecast.ForecastViewModel
 import mustafaozhan.github.com.model.Forecast
 import mustafaozhan.github.com.ui.databinding.FragmentForecastBinding
 import mustafaozhan.github.com.ui.databinding.ItemForecastBinding
@@ -21,20 +19,30 @@ import mustafaozhan.github.com.util.format
 import mustafaozhan.github.com.util.getWeatherIconByName
 import mustafaozhan.github.com.util.showLoading
 import mustafaozhan.github.com.util.showSnack
+import mustafaozhan.github.com.viewmodel.forecast.ForecastEffect
+import mustafaozhan.github.com.viewmodel.forecast.ForecastEvent
+import mustafaozhan.github.com.viewmodel.forecast.ForecastViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
 
+    private val args: ForecastFragmentArgs by navArgs()
     private val forecastViewModel: ForecastViewModel by viewModel()
+
     private lateinit var forecastAdapter: ForecastAdapter
 
     override fun getViewBinding() = FragmentForecastBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setData()
         initViews()
         observeStates()
         observeEffect()
+    }
+
+    private fun setData() {
+        forecastViewModel.setData(args.history)
     }
 
     private fun initViews() {
@@ -50,6 +58,9 @@ class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
 
                 override fun onQueryTextChange(newText: String) = false
             })
+            layoutForecastToolbar.imgHistory.setOnClickListener {
+                forecastViewModel.event.onHistoryClick()
+            }
         }
     }
 
@@ -79,6 +90,14 @@ class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
                 ForecastEffect.CityNotFound -> showSnack(
                     requireView(),
                     R.string.txt_city_not_found
+                )
+                is ForecastEffect.OpenDetailScreen -> navigate(
+                    R.id.forecastFragment,
+                    ForecastFragmentDirections.actionForecastFragmentToDetailFragment(viewEffect.forecast)
+                )
+                ForecastEffect.OpenHistory -> navigate(
+                    R.id.forecastFragment,
+                    ForecastFragmentDirections.actionForecastFragmentToHistoryFragment()
                 )
             }
         }
@@ -115,6 +134,8 @@ class ForecastAdapter(
             )
             txtWeatherStatus.text = item.weather?.firstOrNull()?.main
             txtWeatherTime.text = item.dtTxt?.format()
+
+            itemBinding.root.setOnClickListener { event.onItemClick(item) }
         }
     }
 

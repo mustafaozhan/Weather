@@ -1,4 +1,4 @@
-package mustafaozhan.github.com.forecast
+package mustafaozhan.github.com.viewmodel.forecast
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import mustafaozhan.github.com.model.Forecast
@@ -28,17 +28,22 @@ data class ForecastState(
 
 interface ForecastEvent {
     fun onQueryChange(query: String)
+    fun onItemClick(forecast: Forecast)
+    fun onHistoryClick()
 }
 
 sealed class ForecastEffect {
     object Error : ForecastEffect()
     object CityNotFound : ForecastEffect()
+    data class OpenDetailScreen(val forecast: Forecast) : ForecastEffect()
+    object OpenHistory : ForecastEffect()
 }
 
-data class ForecastData(
-    var query: String = "Berlin"
-) {
+class ForecastData {
+    lateinit var query: String
+
     companion object {
         const val ERROR_CODE_NOT_FOUND = 404
+        const val DEFAULT_QUERY = "Berlin"
     }
 }

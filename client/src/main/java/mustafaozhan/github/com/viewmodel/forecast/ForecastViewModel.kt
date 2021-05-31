@@ -1,4 +1,4 @@
-package mustafaozhan.github.com.forecast
+package mustafaozhan.github.com.viewmodel.forecast
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,14 +8,19 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import mustafaozhan.github.com.data.api.ApiRepository
+import mustafaozhan.github.com.data.db.HistoryRepository
 import mustafaozhan.github.com.error.HttpRequestException
-import mustafaozhan.github.com.forecast.ForecastData.Companion.ERROR_CODE_NOT_FOUND
-import mustafaozhan.github.com.forecast.ForecastState.Companion.update
+import mustafaozhan.github.com.model.Forecast
 import mustafaozhan.github.com.model.ForecastResponse
+import mustafaozhan.github.com.model.History
+import mustafaozhan.github.com.viewmodel.forecast.ForecastData.Companion.DEFAULT_QUERY
+import mustafaozhan.github.com.viewmodel.forecast.ForecastData.Companion.ERROR_CODE_NOT_FOUND
+import mustafaozhan.github.com.viewmodel.forecast.ForecastState.Companion.update
 import timber.log.Timber
 
 class ForecastViewModel(
-    private val apiRepository: ApiRepository
+    private val apiRepository: ApiRepository,
+    private val historyRepository: HistoryRepository
 ) : ViewModel(), ForecastEvent {
     // region SEED
     private val _state = MutableStateFlow(ForecastState())
@@ -29,13 +34,21 @@ class ForecastViewModel(
     private val data = ForecastData()
     // endregion
 
-    init {
+    fun setData(history: String?) {
+        if (history != null) {
+            data.query = history
+        } else {
+            data.query = DEFAULT_QUERY
+        }
         getForecast()
     }
 
     private fun getForecast() {
         _state.update(isLoading = true)
         viewModelScope.launch {
+
+            historyRepository.insertHistory(History(data.query))
+
             apiRepository
                 .getForecast(data.query)
                 .execute(
@@ -78,5 +91,17 @@ class ForecastViewModel(
     override fun onQueryChange(query: String) {
         data.query = query
         getForecast()
+    }
+
+    override fun onItemClick(forecast: Forecast) {
+        viewModelScope.launch {
+            _effect.emit(ForecastEffect.OpenDetailScreen(forecast))
+        }
+    }
+
+    override fun onHistoryClick() {
+        viewModelScope.launch {
+            _effect.emit(ForecastEffect.OpenHistory)
+        }
     }
 }
