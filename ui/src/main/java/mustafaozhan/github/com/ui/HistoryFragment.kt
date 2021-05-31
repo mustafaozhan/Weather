@@ -1,5 +1,6 @@
 package mustafaozhan.github.com.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.lifecycle.addRepeatingJob
 import androidx.recyclerview.widget.DiffUtil
 import com.github.mustafaozhan.basemob.adapter.BaseVBRecyclerViewAdapter
 import com.github.mustafaozhan.basemob.bottomsheet.BaseVBBottomSheetDialogFragment
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.coroutines.flow.collect
 import mustafaozhan.github.com.model.History
 import mustafaozhan.github.com.ui.databinding.FragmentHistoryBinding
@@ -16,15 +18,21 @@ import mustafaozhan.github.com.ui.databinding.ItemHistoryBinding
 import mustafaozhan.github.com.ui.history.HistoryEffect
 import mustafaozhan.github.com.ui.history.HistoryEvent
 import mustafaozhan.github.com.viewmodel.history.HistoryViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class HistoryFragment : BaseVBBottomSheetDialogFragment<FragmentHistoryBinding>() {
 
-    private val historyViewModel: HistoryViewModel by viewModel()
+    @Inject
+    lateinit var historyViewModel: HistoryViewModel
 
     private lateinit var historyAdapter: HistoryAdapter
 
     override fun getViewBinding() = FragmentHistoryBinding.inflate(layoutInflater)
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

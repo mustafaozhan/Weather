@@ -1,11 +1,13 @@
 package mustafaozhan.github.com.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.addRepeatingJob
 import androidx.navigation.fragment.navArgs
 import com.github.mustafaozhan.basemob.fragment.BaseVBFragment
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.coroutines.flow.collect
 import mustafaozhan.github.com.ui.databinding.FragmentDetailBinding
 import mustafaozhan.github.com.util.format
@@ -13,14 +15,21 @@ import mustafaozhan.github.com.util.getWeatherIconByName
 import mustafaozhan.github.com.util.showDetailOrHide
 import mustafaozhan.github.com.viewmodel.detail.DetailEffect
 import mustafaozhan.github.com.viewmodel.detail.DetailViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class DetailFragment : BaseVBFragment<FragmentDetailBinding>() {
+
+    @Inject
+    lateinit var detailViewModel: DetailViewModel
+
     private val args: DetailFragmentArgs by navArgs()
 
-    private val detailViewModel: DetailViewModel by viewModel()
-
     override fun getViewBinding() = FragmentDetailBinding.inflate(layoutInflater)
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
