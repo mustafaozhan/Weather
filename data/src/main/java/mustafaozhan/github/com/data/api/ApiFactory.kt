@@ -25,7 +25,7 @@ internal class ApiFactory
 
     private fun createRetrofit(httpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.API_RUL)
+            .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
             .client(httpClient)
             .build()
