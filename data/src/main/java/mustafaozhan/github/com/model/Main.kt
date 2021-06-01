@@ -5,13 +5,13 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Main(
-    val feelsLike: Double?,
-    val grndLevel: Int?,
-    val humidity: Int?,
-    val pressure: Int?,
-    val seaLevel: Int?,
-    val temp: Double?,
-    val tempKf: Double?,
-    val tempMax: Double?,
-    val tempMin: Double?
+    val feelsLike: Double? = null,
+    val grndLevel: Int? = null,
+    val humidity: Int? = null,
+    val pressure: Int? = null,
+    val seaLevel: Int? = null,
+    val temp: Double? = null,
+    val tempKf: Double? = null,
+    val tempMax: Double? = null,
+    val tempMin: Double? = null
 ) : Parcelable

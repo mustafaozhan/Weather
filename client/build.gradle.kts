@@ -34,6 +34,11 @@ dependencies {
         implementation(coroutines)
         implementation(timber)
         implementation(dagger)
+
+        testImplementation(mockK)
+        testImplementation(jUnit)
+        testImplementation(coroutinesTest)
+        testImplementation(archTesting)
     }
 
     with(Annotations) {

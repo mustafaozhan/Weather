@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Rain(
-    val threeHours: Double?
+    val threeHours: Double? = null
 ) : Parcelable

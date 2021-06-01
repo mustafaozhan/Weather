@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Clouds(
-    val all: Int?
+    val all: Int? = null
 ) : Parcelable

@@ -1,9 +1,9 @@
 package mustafaozhan.github.com.model
 
 data class ForecastResponse(
-    val city: City?,
-    val cnt: Int?,
-    val cod: String?,
-    val list: List<Forecast>?,
-    val message: Int?
+    val city: City? = null,
+    val cnt: Int? = null,
+    val cod: String? = null,
+    val list: List<Forecast>? = null,
+    val message: Int? = null
 )
