@@ -3,8 +3,8 @@
     <string name="click_back_again_to_exit">Please click BACK again to exit</string>
 
     <string name="txt_location">%s, %s</string>
-    <string name="txt_temperature">"Temperature: %s°C"</string>
-    <string name="txt_feels_like">"Fells like: %s°C"</string>
+    <string name="txt_temperature">"Temperature: %s °C"</string>
+    <string name="txt_feels_like">"Fells like: %s °C"</string>
 
     <string name="txt_forecast">Forecast</string>
     <string name="txt_search">Search</string>
@@ -15,12 +15,16 @@
     <string name="details">Details</string>
 
     <string name="txt_description">"Description: %s</string>
-    <string name="txt_min_degree">"Min temperature: %s°C"</string>
-    <string name="txt_max_degree">"Max temperature: %s°C"</string>
+    <string name="txt_min_degree">"Min temperature: %s °C"</string>
+    <string name="txt_max_degree">"Max temperature: %s °C"</string>
     <string name="txt_humidity">"Humidity: \%%%s"</string>
     <string name="txt_wind">"Wind: %s km/h"</string>
-    <string name="txt_sea_level">"Sea level: %sm"</string>
+    <string name="txt_sea_level">"Sea level: %s m"</string>
+    <string name="txt_visibility">"Visibility: %s m"</string>
+    <string name="txt_pressure">"Pressure: %s mb"</string>
 
     <string name="txt_history">History</string>
+    <string name="txt_hot">Hot</string>
+    <string name="txt_cold">Cold</string>
 
 </resources>

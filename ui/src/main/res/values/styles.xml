@@ -51,7 +51,7 @@
     </style>
 
     <style name="ForecastItemStyle">
-        <item name="android:background">@color/color_background</item>
+        <item name="android:background">@drawable/selector_item</item>
         <item name="android:padding">@dimen/padding_forecast</item>
     </style>
 
@@ -85,6 +85,8 @@
     </style>
 
     <style name="DetailTextStyle">
+        <item name="android:maxLines">1</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/color_text</item>
         <item name="android:textSize">@dimen/text_size_detail</item>

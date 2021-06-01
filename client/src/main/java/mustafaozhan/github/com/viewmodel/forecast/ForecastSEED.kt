@@ -40,7 +40,7 @@ sealed class ForecastEffect {
 }
 
 class ForecastData {
-    lateinit var query: String
+    var query: String = ""
 
     companion object {
         const val ERROR_CODE_NOT_FOUND = 404

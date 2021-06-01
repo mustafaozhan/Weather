@@ -16,7 +16,7 @@ internal class ApiFactory
 @Inject constructor() {
 
     companion object {
-        private const val TIME_OUT: Long = 3
+        private const val TIME_OUT: Long = 5
     }
 
     val apiService: ApiService by lazy {

@@ -1,6 +1,7 @@
 package mustafaozhan.github.com.ui
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.addRepeatingJob
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import com.github.mustafaozhan.basemob.adapter.BaseVBRecyclerViewAdapter
 import com.github.mustafaozhan.basemob.fragment.BaseVBFragment
 import dagger.android.support.AndroidSupportInjection
@@ -56,6 +58,7 @@ class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
 
     private fun initViews() {
         forecastAdapter = ForecastAdapter(forecastViewModel.event)
+        setSpanByOrientation(resources.configuration.orientation)
         with(binding) {
             recyclerViewForecast.adapter = forecastAdapter
             layoutForecastToolbar.searchView.setOnQueryTextListener(object :
@@ -110,6 +113,23 @@ class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
                 )
             }
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        setSpanByOrientation(newConfig.orientation)
+    }
+
+    private fun setSpanByOrientation(orientation: Int) {
+        binding.recyclerViewForecast.layoutManager = GridLayoutManager(
+            requireContext(),
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE) SPAN_LANDSCAPE else SPAN_PORTRAIT
+        )
+    }
+
+    companion object {
+        internal const val SPAN_PORTRAIT = 2
+        internal const val SPAN_LANDSCAPE = 4
     }
 }
 

@@ -35,12 +35,10 @@
         android:id="@+id/recycler_view_forecast"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_city_name"
-        app:spanCount="2" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_city_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
