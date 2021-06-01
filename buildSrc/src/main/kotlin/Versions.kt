@@ -17,5 +17,6 @@ object Versions {
     const val navigation = "2.3.0"
     const val moshiConverter = "2.9.0"
     const val okhttpInterceptor = "4.8.1"
+    const val glide = "4.12.0"
     const val dependencyUpdates = "0.39.0"
 }

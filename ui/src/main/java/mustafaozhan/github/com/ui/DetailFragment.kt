@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.collect
 import mustafaozhan.github.com.model.WeatherStatus
 import mustafaozhan.github.com.ui.databinding.FragmentDetailBinding
 import mustafaozhan.github.com.util.format
-import mustafaozhan.github.com.util.getWeatherIconByName
 import mustafaozhan.github.com.util.gone
+import mustafaozhan.github.com.util.loadImageUrl
 import mustafaozhan.github.com.util.showDetailOrHide
 import mustafaozhan.github.com.viewmodel.detail.DetailEffect
 import mustafaozhan.github.com.viewmodel.detail.DetailViewModel
@@ -53,7 +53,7 @@ class DetailFragment : BaseVBFragment<FragmentDetailBinding>() {
         detailViewModel.state.collect {
             with(it) {
                 with(binding) {
-                    imgForecast.getWeatherIconByName(it.imgName)
+                    imgForecast.loadImageUrl(it.imgName)
                     txtDate.text = date.format()
                     txtDescription.showDetailOrHide(R.string.txt_description, description)
                     txtTemp.showDetailOrHide(R.string.txt_temperature, temperature)

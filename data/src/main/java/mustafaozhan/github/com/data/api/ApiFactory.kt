@@ -15,10 +15,6 @@ import javax.inject.Inject
 internal class ApiFactory
 @Inject constructor() {
 
-    companion object {
-        private const val TIME_OUT: Long = 5
-    }
-
     val apiService: ApiService by lazy {
         createRetrofit(getClient()).create(ApiService::class.java)
     }
@@ -40,5 +36,9 @@ internal class ApiFactory
 
     private fun getInterceptor() = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BASIC
+    }
+
+    companion object {
+        private const val TIME_OUT: Long = 5
     }
 }

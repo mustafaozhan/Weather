@@ -20,7 +20,7 @@ import mustafaozhan.github.com.model.Forecast
 import mustafaozhan.github.com.ui.databinding.FragmentForecastBinding
 import mustafaozhan.github.com.ui.databinding.ItemForecastBinding
 import mustafaozhan.github.com.util.format
-import mustafaozhan.github.com.util.getWeatherIconByName
+import mustafaozhan.github.com.util.loadImageUrl
 import mustafaozhan.github.com.util.showLoading
 import mustafaozhan.github.com.util.showSnack
 import mustafaozhan.github.com.viewmodel.forecast.ForecastEffect
@@ -152,7 +152,7 @@ class ForecastAdapter(
         BaseVBViewHolder<Forecast, ItemForecastBinding>(itemBinding) {
 
         override fun onItemBind(item: Forecast) = with(itemBinding) {
-            imgForecast.getWeatherIconByName(item.weather?.firstOrNull()?.icon)
+            imgForecast.loadImageUrl(item.weather?.firstOrNull()?.icon)
             txtTemperature.text = txtTemperature.context.getString(
                 R.string.txt_temperature,
                 item.main?.temp?.toInt()?.toString()

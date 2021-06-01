@@ -10,6 +10,8 @@ import mustafaozhan.github.com.data.entity.History
 @Database(entities = [(History::class)], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
+    abstract fun historyDao(): HistoryDao
+
     companion object {
         private const val DATABASE_NAME = "application_database.sqlite"
 
@@ -21,6 +23,4 @@ abstract class AppDatabase : RoomDatabase() {
             DATABASE_NAME
         ).build()
     }
-
-    abstract fun historyDao(): HistoryDao
 }

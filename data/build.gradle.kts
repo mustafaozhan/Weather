@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.konan.properties.Properties
-
 plugins {
     with(Plugins) {
         id(androidLibrary)
@@ -35,20 +33,17 @@ android {
 
         buildTypes {
             all {
-                val prob = Properties().apply {
-                    load(project.rootProject.file("local.properties").inputStream())
-                }
                 buildConfigField(
                     Types.string,
                     Keys.apiUrl,
                     System.getenv(Keys.apiUrl)?.toString()?.encode()
-                        ?: prob[Keys.apiUrl].toString().encode()
+                        ?: project.getLocalPropertyByKey(Keys.apiUrl).encode()
                 )
                 buildConfigField(
                     Types.string,
                     Keys.appId,
                     System.getenv(Keys.appId)?.toString()?.encode()
-                        ?: prob[Keys.appId].toString().encode()
+                        ?: project.getLocalPropertyByKey(Keys.appId).encode()
                 )
             }
         }

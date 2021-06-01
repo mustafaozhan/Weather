@@ -13,6 +13,7 @@ import mustafaozhan.github.com.di.ApiModule
 import mustafaozhan.github.com.di.AppDatabaseModule
 import mustafaozhan.github.com.di.FragmentInjectionModule
 import mustafaozhan.github.com.di.FragmentScope
+import mustafaozhan.github.com.di.GlideModule
 import mustafaozhan.github.com.di.ViewModelModule
 import mustafaozhan.github.com.weather.WeatherApp
 import javax.inject.Singleton
@@ -29,6 +30,7 @@ import javax.inject.Singleton
         // ui
         ActivityInjectionModule::class,
         FragmentInjectionModule::class,
+        GlideModule::class,
         // client
         ViewModelModule::class,
         // data
