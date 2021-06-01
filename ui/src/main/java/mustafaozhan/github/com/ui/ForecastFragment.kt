@@ -1,5 +1,6 @@
 package mustafaozhan.github.com.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DiffUtil
 import com.github.mustafaozhan.basemob.adapter.BaseVBRecyclerViewAdapter
 import com.github.mustafaozhan.basemob.fragment.BaseVBFragment
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.coroutines.flow.collect
 import mustafaozhan.github.com.model.Forecast
 import mustafaozhan.github.com.ui.databinding.FragmentForecastBinding
@@ -22,16 +24,23 @@ import mustafaozhan.github.com.util.showSnack
 import mustafaozhan.github.com.viewmodel.forecast.ForecastEffect
 import mustafaozhan.github.com.viewmodel.forecast.ForecastEvent
 import mustafaozhan.github.com.viewmodel.forecast.ForecastViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class ForecastFragment : BaseVBFragment<FragmentForecastBinding>() {
 
+    @Inject
+    lateinit var forecastViewModel: ForecastViewModel
+
     private val args: ForecastFragmentArgs by navArgs()
-    private val forecastViewModel: ForecastViewModel by viewModel()
 
     private lateinit var forecastAdapter: ForecastAdapter
 
     override fun getViewBinding() = FragmentForecastBinding.inflate(layoutInflater)
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

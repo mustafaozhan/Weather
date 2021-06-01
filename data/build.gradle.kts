@@ -14,6 +14,12 @@ android {
         defaultConfig {
             minSdk = ProjectSettings.minSdkVersion
             targetSdk = ProjectSettings.targetSdkVersion
+
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments(mapOf("room.schemaLocation" to "$projectDir/schemas"))
+                }
+            }
         }
 
         compileOptions {
@@ -39,7 +45,7 @@ android {
 dependencies {
     with(Dependencies.Android) {
         implementation(kotlin)
-        implementation(koinCore)
+        implementation(dagger)
         implementation(coroutines)
         implementation(retrofit)
         implementation(moshi)
@@ -50,5 +56,7 @@ dependencies {
     with(Annotations) {
         kapt(moshi)
         kapt(room)
+        kapt(daggerCompiler)
+        kapt(daggerProcessor)
     }
 }

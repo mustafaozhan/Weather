@@ -22,7 +22,7 @@ import java.util.concurrent.TimeoutException
 import javax.net.ssl.SSLException
 
 internal class ApiRepositoryImpl(
-    private val apiService: ApiService
+    private val apiFactory: ApiFactory
 ) : ApiRepository {
     @Suppress("TooGenericExceptionCaught")
     suspend fun <T> apiRequest(
@@ -55,6 +55,6 @@ internal class ApiRepositoryImpl(
     }
 
     override suspend fun getForecast(query: String) = apiRequest {
-        apiService.getForecast(query).toModel()
+        apiFactory.apiService.getForecast(query).toModel()
     }
 }

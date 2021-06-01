@@ -31,7 +31,7 @@ class ForecastViewModel(
 
     val event = this as ForecastEvent
 
-    private val data = ForecastData()
+    val data = ForecastData()
     // endregion
 
     fun setData(history: String?) {
