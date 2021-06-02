@@ -24,6 +24,9 @@ jobs:
           java-version: 11
 
       - name: Gradle Build
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          APP_ID: ${{ secrets.APP_ID }}
         run: ./gradlew build --parallel
 
       - name: Notify slack success

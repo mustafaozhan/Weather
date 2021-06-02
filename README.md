@@ -15,20 +15,17 @@
   - [Room](https://developer.android.com/topic/libraries/architecture/room) - SQLite object mapping library.
   - [Navigation](https://developer.android.com/guide/navigation/navigation-getting-started) - Android Navigation Component
   - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
-
 - [Dependency Injection](https://developer.android.com/training/dependency-injection)
   - [Dagger](https://dagger.dev/dev-guide/) - Standard library to incorporate Dagger dependency injection into an Android application.
-
 - Networking
   - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
   - [Moshi](https://github.com/square/moshi) - Moshi is a modern JSON library for Android and Java. It makes it easy to parse JSON into Java objects.
-
 - Testing
   - [JUnit](https://junit.org/junit4/) - JUnit is a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.
   - [MockK](https://mockk.io/) - mocking library for Kotlin.
   - [kotlinx-coroutines-test](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/) - This package provides testing utilities for effectively testing coroutines.
   - [Arch Core](https://developer.android.com/jetpack/androidx/releases/arch-core) - Helper for other arch dependencies, including JUnit test rules that can be used with LiveData.
-
+- [Glide](https://github.com/bumptech/glide) - Glide is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface.
 - [Timber](https://github.com/JakeWharton/timber) - This is a logger with a small, extensible API which provides utility on top of Android's normal Log class.
 
 ## Architecture

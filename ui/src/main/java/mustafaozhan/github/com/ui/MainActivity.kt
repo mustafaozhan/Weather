@@ -9,10 +9,6 @@ import kotlinx.coroutines.launch
 import mustafaozhan.github.com.util.showSnack
 
 class MainActivity : BaseActivity() {
-    companion object {
-         const val BACK_DELAY: Long = 2000
-    }
-
     private var doubleBackToExitPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,5 +33,9 @@ class MainActivity : BaseActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    companion object {
+        const val BACK_DELAY: Long = 2000
     }
 }

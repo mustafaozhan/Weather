@@ -33,10 +33,18 @@ android {
 
         buildTypes {
             all {
-                with(Keys) {
-                    buildConfigField(apiUrl.first, apiUrl.second, apiUrl.third)
-                    buildConfigField(appId.first, appId.second, appId.third)
-                }
+                buildConfigField(
+                    Types.string,
+                    Keys.apiUrl,
+                    System.getenv(Keys.apiUrl)?.toString()?.encode()
+                        ?: project.getLocalPropertyByKey(Keys.apiUrl).encode()
+                )
+                buildConfigField(
+                    Types.string,
+                    Keys.appId,
+                    System.getenv(Keys.appId)?.toString()?.encode()
+                        ?: project.getLocalPropertyByKey(Keys.appId).encode()
+                )
             }
         }
     }

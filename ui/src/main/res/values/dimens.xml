@@ -19,8 +19,9 @@
 
     <dimen name="with_height_detail_icon">128dp</dimen>
     <dimen name="margin_detail_icon">24dp</dimen>
-    <dimen name="text_size_detail">15sp</dimen>
-    <dimen name="padding_detail">16dp</dimen>
+    <dimen name="text_size_detail">16sp</dimen>
+    <dimen name="text_size_detail_status">24sp</dimen>
+    <dimen name="padding_detail">10dp</dimen>
 
     <dimen name="padding_history">8dp</dimen>
 

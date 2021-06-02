@@ -48,9 +48,7 @@ class HistoryFragment : BaseVBBottomSheetDialogFragment<FragmentHistoryBinding>(
 
     private fun observeStates() = viewLifecycleOwner.addRepeatingJob(Lifecycle.State.STARTED) {
         historyViewModel.state.collect {
-            with(it) {
-                historyAdapter.submitList(it.historyList)
-            }
+            historyAdapter.submitList(it.historyList)
         }
     }
 

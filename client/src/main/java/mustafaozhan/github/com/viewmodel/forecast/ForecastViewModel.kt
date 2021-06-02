@@ -34,13 +34,16 @@ class ForecastViewModel(
     val data = ForecastData()
     // endregion
 
-    fun setData(history: String?) {
-        if (history != null) {
-            data.query = history
-        } else {
+    fun setData(history: String?) = when (history) {
+        data.query -> Unit // Do nothing
+        null -> {
             data.query = DEFAULT_QUERY
+            getForecast()
         }
-        getForecast()
+        else -> {
+            data.query = history
+            getForecast()
+        }
     }
 
     private fun getForecast() {

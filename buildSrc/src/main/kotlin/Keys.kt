@@ -1,14 +1,22 @@
+import org.gradle.api.Project
+import java.util.Properties
+
 object Keys {
-    val apiUrl = Triple(
-        Types.string,
-        "API_RUL",
-        "http://api.openweathermap.org/".encode()
-    )
-    val appId = Triple(
-        Types.string,
-        "APP_ID",
-        "428d70aa1268b4be33b6fd9d7f12bc2c".encode()
-    )
+    const val apiUrl = "API_URL"
+    const val appId = "APP_ID"
 }
 
-private fun String.encode(): String = "\"$this\""
+@Suppress("SwallowedException", "TooGenericExceptionCaught")
+fun Project.getLocalPropertyByKey(key: String) = try {
+    Properties().apply {
+        load(rootProject.file("local.properties").inputStream())
+    }
+} catch (e: Exception) {
+    null
+}?.get(key)?.toString()
+
+fun String?.encode(): String = if (this == null) {
+    ""
+} else {
+    "\"$this\""
+}

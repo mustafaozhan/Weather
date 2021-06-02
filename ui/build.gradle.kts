@@ -39,11 +39,13 @@ dependencies {
         implementation(dagger)
         implementation(timber)
         implementation(navigation)
+        implementation(glide)
     }
 
     with(Annotations) {
         kapt(daggerCompiler)
         kapt(daggerProcessor)
+        kapt(glide)
     }
 
     with(Modules) {

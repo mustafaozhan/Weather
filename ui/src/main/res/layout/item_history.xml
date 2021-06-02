@@ -9,6 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_history"
+        android:background="@drawable/selector_item"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/color_text"
         app:layout_constraintBottom_toBottomOf="parent"

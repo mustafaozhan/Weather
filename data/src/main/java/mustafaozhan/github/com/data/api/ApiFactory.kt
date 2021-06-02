@@ -15,17 +15,13 @@ import javax.inject.Inject
 internal class ApiFactory
 @Inject constructor() {
 
-    companion object {
-        private const val TIME_OUT: Long = 3
-    }
-
     val apiService: ApiService by lazy {
         createRetrofit(getClient()).create(ApiService::class.java)
     }
 
     private fun createRetrofit(httpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.API_RUL)
+            .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
             .client(httpClient)
             .build()
@@ -40,5 +36,9 @@ internal class ApiFactory
 
     private fun getInterceptor() = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BASIC
+    }
+
+    companion object {
+        private const val TIME_OUT: Long = 5
     }
 }

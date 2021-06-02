@@ -23,6 +23,7 @@ object Dependencies {
             "com.squareup.retrofit2:converter-moshi:${Versions.moshiConverter}"
         const val okhttpInterceptor =
             "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpInterceptor}"
+        const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
         const val jUnit = "junit:junit:${Versions.jUnit}"
         const val mockK = "io.mockk:mockk:${Versions.mockK}"
         const val archTesting = "android.arch.core:core-testing:${Versions.archTesting}"
